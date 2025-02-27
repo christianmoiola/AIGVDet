@@ -37,6 +37,11 @@ if __name__ == "__main__":
         iter_data_time = time.time()
         epoch_iter = 0
 
+
+
+
+
+
         for data in tqdm(data_loader, dynamic_ncols=True):
             trainer.total_steps += 1
             epoch_iter += cfg.batch_size
