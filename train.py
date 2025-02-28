@@ -37,11 +37,6 @@ if __name__ == "__main__":
         iter_data_time = time.time()
         epoch_iter = 0
 
-
-
-
-
-
         for data in tqdm(data_loader, dynamic_ncols=True):
             trainer.total_steps += 1
             epoch_iter += cfg.batch_size
@@ -71,9 +66,9 @@ if __name__ == "__main__":
         val_writer.add_scalar("AP", val_results["AP"], trainer.total_steps)
         val_writer.add_scalar("ACC", val_results["ACC"], trainer.total_steps)
         # add
-        val_writer.add_scalar("AUC", val_results["AUC"], trainer.total_steps)
-        val_writer.add_scalar("TPR", val_results["TPR"], trainer.total_steps)
-        val_writer.add_scalar("TNR", val_results["TNR"], trainer.total_steps)
+        # val_writer.add_scalar("AUC", val_results["AUC"], trainer.total_steps)
+        # val_writer.add_scalar("TPR", val_results["TPR"], trainer.total_steps)
+        # val_writer.add_scalar("TNR", val_results["TNR"], trainer.total_steps)
         
         log.write(f"(Val @ epoch {epoch}) AP: {val_results['AP']}; ACC: {val_results['ACC']}\n")
 

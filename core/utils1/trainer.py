@@ -4,9 +4,9 @@ import torch
 import torch.nn as nn
 from torch.nn import init
 
-from utils1.config import CONFIGCLASS
-from utils1.utils import get_network
-from utils1.warmup import GradualWarmupScheduler
+from .config import CONFIGCLASS
+from .utils import get_network
+from .warmup import GradualWarmupScheduler
 
 
 class BaseModel(nn.Module):
@@ -18,7 +18,7 @@ class BaseModel(nn.Module):
         self.save_dir = cfg.ckpt_dir
         self.device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
         self.model:nn.Module
-        self.model=nn.Module.to(self.device)
+        self.model=nn.Module().to(self.device)
         # self.model.to(self.device)
         #self.model.load_state_dict(torch.load('./checkpoints/optical.pth'))
         self.optimizer: torch.optim.Optimizer
@@ -27,6 +27,8 @@ class BaseModel(nn.Module):
         save_filename = f"model_epoch_{epoch}.pth"
         save_path = os.path.join(self.save_dir, save_filename)
 
+        print("saving weights in ", save_path)
+        
         # serialize model and optimizer to dict
         state_dict = {
             "model": self.model.state_dict(),

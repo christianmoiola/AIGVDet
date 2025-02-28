@@ -16,7 +16,7 @@ class DefaultConfigs(ABC):
     class_bal = False
     batch_size = 64
     loadSize = 256
-    cropSize = 224
+    cropSize = 124
     epoch = "latest"
     num_workers = 20
     serial_batches = False
@@ -36,6 +36,7 @@ class DefaultConfigs(ABC):
     aug_crop = True
     aug_flip = True
     aug_norm = True
+    aug_rotation = True
 
     ####### train setting ######
     warmup = False
@@ -51,7 +52,7 @@ class DefaultConfigs(ABC):
     continue_train = False
     epoch_count = 1
     last_epoch = -1
-    nepoch = 400
+    nepoch = 300
     beta1 = 0.9
     lr = 0.0001
     init_type = "normal"
@@ -61,10 +62,13 @@ class DefaultConfigs(ABC):
     # paths information
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     dataset_root = os.path.join(root_dir, "data")
-    exp_root = os.path.join(root_dir, "data", "exp")
+    # dataset_root = os.path.join(root_dir)
+    # exp_root = os.path.join(root_dir, "data", "exp")
+    exp_root = os.path.join(root_dir, "exp")
+    
     _exp_name = ""
     exp_dir = ""
-    ckpt_dir = ""
+    ckpt_dir = os.path.join(root_dir, "weights")
     logs_path = ""
     ckpt_path = ""
 
